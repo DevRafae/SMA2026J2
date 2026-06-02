@@ -15,6 +15,9 @@ body {
     flex-direction: column;
     align-items: center;
     user-select: none;
+    /* AJUSTE: Permite que a página interna role se faltar espaço na tela ou no iframe */
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .header {
@@ -76,7 +79,9 @@ body {
     justify-content: space-between;
     width: 100%;
     max-width: 700px;
-    gap: 80px; 
+    /* AJUSTE: Reduzido o espaçamento para melhorar o encaixe em telas mais estreitas */
+    gap: 40px; 
+    margin-bottom: 20px;
 }
 
 canvas {
