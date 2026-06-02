@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA 2026 - Jogo de Ligação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1>SMA 2026</h1>
+        <h2>Óleo de Cozinha: Do descarte correto à economia circular na prática.</h2>
+    </div>
+
+    <div class="info-panel">
+        <div class="instructions">
+            <strong>Como jogar:</strong> Clique em um conceito na coluna da esquerda e, em seguida, clique na resposta correspondente na coluna da direita. Acerte todas as combinações no menor tempo possível!
+        </div>
+        <div class="timer-box">
+            Tempo: <span id="timer">00:00</span>
+        </div>
+    </div>
+
+    <div class="game-container" id="gameContainer">
+        <canvas id="paintCanvas"></canvas>
+
+        <div class="column left-col">
+            <div class="box" data-id="resíduo">Resíduo em Rios</div>
+            <div class="box" data-id="ralo">Descarte no Ralo</div>
+            <div class="box" data-id="sabão">Sabão Ecológico</div>
+            <div class="box" data-id="logística">Logística Reversa</div>
+            <div class="box" data-id="biodiesel">Biodiesel</div>
+            <div class="box" data-id="solo">Solo Impermeável</div>
+        </div>
+
+        <div class="column right-col">
+            <div class="box" data-target="ralo">Obstrução de redes e custos de manutenção</div>
+            <div class="box" data-target="biodiesel">Combustível limpo gerado do óleo usado</div>
+            <div class="box" data-target="solo">Óleo na terra que impede a absorção da chuva</div>
+            <div class="box" data-target="resíduo">Forma filme que impede a oxigenação da água</div>
+            <div class="box" data-target="logística">Retorno do resíduo para o ciclo produtivo</div>
+            <div class="box" data-target="sabão">Transformação química caseira do óleo</div>
+        </div>
+    </div>
+
+    <div class="footer">MCassab</div>
+
+    <div class="modal-overlay" id="finishModal">
+        <div class="modal-content">
+            <h2>Parabéns! 🎉</h2>
+            <p>Você completou a dinâmica com sucesso.</p>
+            <p class="final-time">Seu tempo foi de: <span id="totalTime">00:00</span></p>
+            <p class="instruction-highlight">
+                Agora, clique no botão <strong>"Concluir Dinâmica"</strong> para preencher o formulário e se inscrever no sorteio!
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
