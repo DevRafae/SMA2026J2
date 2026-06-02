@@ -24,6 +24,12 @@ function init() {
     boxes.forEach(box => {
         box.addEventListener('click', () => handleSelection(box));
     });
+
+    /* ALTERAÇÃO/CORREÇÃO: 
+      Garante que, se o usuário rolar a tela em dispositivos móveis 
+      ou iFrames menores, as linhas acompanhem o movimento das caixas.
+    */
+    window.addEventListener('scroll', drawConnections);
 }
 
 function resizeCanvas() {
