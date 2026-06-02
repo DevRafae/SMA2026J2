@@ -1,0 +1,214 @@
+:root {
+    --primary-color: #5d7c32;
+    --correct-color: #4caf50;
+    --incorrect-color: #f44336;
+    --bg-box: #eaeaea;
+    --dark-text: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 15px;
+    max-width: 600px;
+}
+
+.header h1 {
+    color: #5a6b7c;
+    font-size: 32px;
+    margin: 0;
+}
+
+.header h2 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/* Painel de Instruções e Timer */
+.info-panel {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    border-left: 5px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+    gap: 15px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.instructions {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.timer-box {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark-text);
+    background: #edf2f7;
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+/* Área do Jogo */
+.game-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    gap: 80px; 
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 1;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 45%;
+    z-index: 2;
+}
+
+.box {
+    background-color: var(--bg-box);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--dark-text);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-col .box::after { right: -4px; }
+.right-col .box::after { left: -4px; }
+
+.box.selected {
+    background-color: #d0e0fc;
+    border-color: #2196f3;
+}
+
+.box.correct {
+    border-color: var(--correct-color);
+    background-color: #e8f5e9;
+}
+
+.box.incorrect {
+    animation: shake 0.3s ease-in-out;
+    border-color: var(--incorrect-color);
+    background-color: #ffebee;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.footer {
+    margin-top: 30px;
+    font-weight: bold;
+    color: #5a6b7c;
+}
+
+/* Janela Modal de Finalização */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.final-time {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #2196f3;
+}
+
+.instruction-highlight {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+    background-color: #f0f7f4;
+    border: 1px dashed var(--correct-color);
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
